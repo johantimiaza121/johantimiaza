@@ -54,15 +54,9 @@
             text-align: center;
             margin-top: 20px;
         }
-        .heart {
-            position: absolute;
-            font-size: 30px;
-            color: #d81b60;
-            animation: floatHeart 2s linear infinite;
-        }
-        @keyframes floatHeart {
-            0% { transform: translateY(0); opacity: 1; }
-            100% { transform: translateY(-100px); opacity: 0; }
+        #videoContainer {
+            display: none;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -77,23 +71,28 @@
 
     <div id="message">¡Ya sabía que ibas a aceptar!</div>
 
+    <div id="videoContainer">
+        <video width="400" controls>
+            <source src="video.mp4" type="video/mp4">
+            Tu navegador no soporta videos.
+        </video>
+    </div>
+
     <script>
         document.getElementById("yesButton").addEventListener("click", function() {
             document.getElementById("message").style.display = "block";
+            document.getElementById("videoContainer").style.display = "block";
+        });
 
-            // Generar corazones flotantes
-            setInterval(function() {
-                const heart = document.createElement("div");
-                heart.classList.add("heart");
-                heart.innerText = "❤️";
-                heart.style.left = Math.random() * 100 + "%";
-                heart.style.bottom = "0";
-                heart.style.animationDuration = Math.random() * 3 + 2 + "s";
-                document.body.appendChild(heart);
-                setTimeout(() => heart.remove(), 3000);
-            }, 200);
+        document.getElementById("noButton").addEventListener("click", function() {
+            const noButton = document.getElementById("noButton");
+            noButton.style.left = Math.random() * 80 + "%";
+            noButton.style.top = Math.random() * 80 + "%";
         });
     </script>
 
 </body>
+</html>
+
+
 </html>
